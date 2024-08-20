@@ -9,12 +9,6 @@ export class CoffeeItem {
     this.coffeeItemLocators = page.locator(`li:has(h4)`);
   }
 
-  // // Method to get the name of the coffee from the h4 header
-  // async getName(): Promise<string | null> {
-  //   const headerString = await this.coffeeItemLocators.locator('h4').textContent() || '';
-  //   return headerString.split(' $')[0];
-  // }
-
   // Method to get the price of the coffee cup from the h4 header
   async getPrice(name: string): Promise<number> {
     const headerString = await this.coffeeItemLocators.locator(`h4:has-text("${name} $")`).textContent() || '';
