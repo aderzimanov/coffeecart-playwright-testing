@@ -1,15 +1,12 @@
 import { expect, type Locator, type Page } from '@playwright/test';
+import { AbstractPage } from './AbstractPage';
  
-export class GitHubPage {
+export class GitHubPage extends AbstractPage {
   readonly page: Page;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
+    this.url = './github';
   }
-  
-  // Method to navigate to the cart page
-  async goto() {
-    await this.page.goto('./github');
-  }
-
 }

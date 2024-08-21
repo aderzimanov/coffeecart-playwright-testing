@@ -1,21 +1,15 @@
 import { expect, type Locator, type Page } from '@playwright/test';
-import { CheckoutWidget } from '../components/CheckoutWidget';
-import { PaymentDetailsDialog } from '../components/PaymentDetailsDialog';
+import { AbstractPage } from './AbstractPage';
  
-export class CartPage {
+export class CartPage extends AbstractPage {
   readonly page: Page;
-  readonly checkoutWidget: CheckoutWidget;
-  readonly paymentDetailsDialog: PaymentDetailsDialog;
+  readonly emptyCartMessage: Locator;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
-    this.checkoutWidget = new CheckoutWidget(page);
-    this.paymentDetailsDialog = new PaymentDetailsDialog(page);
-  }
-  
-  // Method to navigate to the cart page
-  async goto() {
-    await this.page.goto('./cart');
+    this.url = './cart';
+    this.emptyCartMessage = page.getByText('No coffee, go add some.');
   }
 
   //Method to remove specific product from the cart

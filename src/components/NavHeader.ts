@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
-export class Navigation {
+export class NavHeader {
   private readonly page: Page;
   readonly menuLink: Locator;
   readonly cartLink: Locator;
@@ -15,17 +15,17 @@ export class Navigation {
   }
 
   // Method to navigate to Menu page
-  async goToMenu(): Promise<void> {
+  async toMenu(): Promise<void> {
       await this.menuLink.click();
     }
   
     // Method to navigate to Menu page
-  async goToCart(): Promise<void> {
+  async toCart(): Promise<void> {
       await this.cartLink.click();
     }
   
     // Method to navigate to Menu page
-  async goToGitHub(): Promise<void> {
+  async toGitHub(): Promise<void> {
       await this.gitHubLink.click();
     }
   
