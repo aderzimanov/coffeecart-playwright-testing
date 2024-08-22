@@ -1,9 +1,16 @@
 import { test, expect } from '@playwright/test';
+import { GitHubPage } from '../src/pages/GitHubPage';
 
-test('Opens a GitHub page using navigation menu ', async ({ page }) => {
-  await page.goto('https://coffee-cart.app/');
-  await page.getByLabel('GitHub page').click();
+let gitHubPage: GitHubPage;
 
-  expect(page.url()).toBe('https://coffee-cart.app/github');
-  await expect(page.getByRole('link', { name: 'jecfish/coffee-cart' })).toBeVisible(); 
+test.describe('Tests "GitHub" page', async () => {
+  test.beforeEach(async({ page }) => {
+    gitHubPage = new GitHubPage(page);
+    await gitHubPage.open();
+  });
+
+  test('Checks that expected links are visible on the page', async () => {
+    await gitHubPage.assertGitHubRepoLinkIsVisible();
+    await gitHubPage.assertExtraActionsLinkIsVisible();
+  });
 });

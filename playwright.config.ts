@@ -1,4 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
+import { testPlanFilter } from "allure-playwright/dist/testplan";
+import * as os from "os";
+import { allure } from 'allure-playwright';
 
 /**
  * Read environment variables from file.
@@ -21,11 +24,34 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'list',
+  reporter: [
+    ["list"], 
+    [
+      "allure-playwright",
+      {
+        detail: true,
+        outputFolder: "allure-results",
+        suiteTitle: true,
+        categories: [
+          {
+            name: "Outdated tests",
+            messageRegex: ".*FileNotFound.*",
+          },
+        ],
+        environmentInfo: {
+          os_platform: os.platform(),
+          os_release: os.release(),
+          os_version: os.version(),
+          node_version: process.version,
+        },
+      },
+    ],
+  ],
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: 'https://coffee-cart.app/',
-
+    //screenshot: 'only-on-failure',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },

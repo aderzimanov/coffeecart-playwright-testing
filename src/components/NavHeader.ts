@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { expect, test, type Locator, type Page } from '@playwright/test';
 
 export class NavHeader {
   private readonly page: Page;
@@ -14,19 +14,22 @@ export class NavHeader {
     this.gitHubLink = page.getByLabel('Github page');
   }
 
-  // Method to navigate to Menu page
   async toMenu(): Promise<void> {
+    await test.step(`Navigates to Menu page`, async() => {
       await this.menuLink.click();
-    }
+    });
+  }
   
-    // Method to navigate to Menu page
   async toCart(): Promise<void> {
+    await test.step(`Navigates to Cart page`, async() => {
       await this.cartLink.click();
-    }
+    });
+  }
   
-    // Method to navigate to Menu page
   async toGitHub(): Promise<void> {
+    await test.step(`Navigates to GitHub page`, async() => {
       await this.gitHubLink.click();
-    }
+    });
+  }
   
 }

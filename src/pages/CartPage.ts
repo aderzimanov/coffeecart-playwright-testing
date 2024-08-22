@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { expect, test, type Locator, type Page } from '@playwright/test';
 import { AbstractPage } from './AbstractPage';
  
 export class CartPage extends AbstractPage {
@@ -12,22 +12,35 @@ export class CartPage extends AbstractPage {
     this.emptyCartMessage = page.getByText('No coffee, go add some.');
   }
 
-  //Method to remove specific product from the cart
   async removeProduct(productName: string): Promise<void> {
     let removeAllButton = this.page.getByLabel(`Remove all ${productName}`, { exact: true });
-    await removeAllButton.click();
+    
+    await test.step(`Removes ${productName} product from the cart`, async() => {
+      await removeAllButton.click();
+    });
   }
 
-  //Method to add 1 unit of specific product to  the cart
   async addOne(productName: string): Promise<void> {
     let addOneButton = this.page.getByRole('button', { name: `Add one ${productName}`, exact: true });
-    await addOneButton.click();
+    
+    await test.step(`Adds 1 unit of ${productName} to the cart`, async() => {
+      await addOneButton.click();
+    });
   }
 
-  //Method to remove 1 unit of specific product from the cart
   async removeOne(productName: string): Promise<void> {
     let removeOneButton = this.page.getByRole('button', { name: `Remove one ${productName}`, exact: true });
-    await removeOneButton.click();
+
+    await test.step(`Removes 1 unit of ${productName} to the cart`, async() => {
+      await removeOneButton.click();
+    });
   }
+  
+  async assertEmptyCartMessageIsVisible(): Promise<void> {
+    await test.step(`Checks if the message about empty cart is displayed`, async() => {
+      await expect(this.emptyCartMessage).toBeVisible();
+    });
+  }
+
 
 }

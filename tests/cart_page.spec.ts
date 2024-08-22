@@ -15,22 +15,21 @@ test.describe('Tests "Cart" page', () => {
     await cartPage.open();
   });
 
-  test('Empties the cart after page reload', async () => {
+  test('Empties the cart after page reload', async ({page}) => {
     let coffeeType = 'Espresso';
     await navHeader.toMenu();
-    await menuPage.coffeeItem.select(coffeeType);
+    await menuPage.addToCart(coffeeType);
     await navHeader.toCart();
     await cartPage.reload();
-
-    await expect(cartPage.emptyCartMessage).toBeVisible();
+    await cartPage.assertEmptyCartMessageIsVisible();
   })
 
   test('Adds coffee item added via menu page, adds/removes one unit in the cart, and removes product from the cart ', async () => {
     let coffeeType1 = 'Espresso';
     let coffeeType2 = 'Espresso Macchiato';
     await navHeader.toMenu();
-    await menuPage.coffeeItem.select(coffeeType1);
-    await menuPage.coffeeItem.select(coffeeType2);
+    await menuPage.addToCart(coffeeType1);
+    await menuPage.addToCart(coffeeType2);
 
     await navHeader.toCart();
     
