@@ -13,8 +13,8 @@ export class AllureBehaviors {
     this.story = '';
   }
 
-  async setFrom(url: string) {
-    const parts = url.split('\\');
+  async setFrom(path: string = '') {
+    const parts = path.split('\\');
     const component = parts[parts.length - 2].replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z])([A-Z][a-z])/g, '$1 $2');
     let featureNameWithExt = parts[parts.length - 1];
     const feature = featureNameWithExt.replace('.spec.ts', '').replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z])([A-Z][a-z])/g, '$1 $2');;
