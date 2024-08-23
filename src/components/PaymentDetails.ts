@@ -46,9 +46,9 @@ export class PaymentDetails {
     });
   }
   
-  async clickPromo(): Promise<void> {
+  async checkPromo(): Promise<void> {
     await test.step(`Checks promo checkbox`, async() => {
-      await this.promoCheckbox.click();
+      await this.promoCheckbox.check({ force: true });
     });
   }
 

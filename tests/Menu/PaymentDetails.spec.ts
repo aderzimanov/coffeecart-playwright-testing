@@ -23,7 +23,7 @@ test.describe('Tests "Payment Details" dialog', () => {
   test('Displays success snackbar after entering and submitting valid data', async () => {
     await menuPage.paymentDetails.fillName('John Doe');
     await menuPage.paymentDetails.fillEmail('john.doe@mail.com');
-    await menuPage.paymentDetails.clickPromo();
+    await menuPage.paymentDetails.checkPromo();
     await menuPage.paymentDetails.submit();
 
     await menuPage.paymentDetails.assertIfNotVisible();
