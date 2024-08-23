@@ -41,4 +41,16 @@ export class CartPage extends AbstractPage {
       await expect(this.emptyCartMessage).toBeVisible();
     });
   }
+
+  async assertCoffeItemPresenceInCart(productName: string): Promise<void> {
+    await test.step(`Checks if "${productName}" is present in the cart`, async() => {
+      await expect(this.page.getByRole('button', { name: `Remove one ${productName}`, exact: true })).toBeVisible();
+    });
+  }
+  
+  async assertCoffeItemAbscenceInCart(productName: string): Promise<void> {
+    await test.step(`Checks if "${productName}" is NOT present in the cart`, async() => {
+      await expect(this.page.getByRole('button', { name: `Remove one ${productName}`, exact: true })).toBeHidden();
+    });
+  }
 }
