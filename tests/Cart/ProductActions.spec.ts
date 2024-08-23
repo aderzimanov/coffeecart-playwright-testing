@@ -1,28 +1,19 @@
-import { test, expect } from '@playwright/test';
-import { CartPage } from '../src/pages/CartPage';
-import { MenuPage } from '../src/pages/MenuPage';
-import { NavHeader } from '../src/components/NavHeader';
+import { test, expect } from '../../src/fixtures/UsedFixtures';
+import { CartPage } from '../../src/pages/CartPage';
+import { MenuPage } from '../../src/pages/MenuPage';
+import { NavHeader } from '../../src/components/NavHeader';
 
 let navHeader: NavHeader;
 let menuPage: MenuPage;
 let cartPage: CartPage;
 
-test.describe('Tests "Cart" page', () => {
+test.describe('Tests the actions available after adding products to the cart ', () => {
   test.beforeEach(async({ page }) => {
     navHeader = new NavHeader(page);
     cartPage = new CartPage(page);
     menuPage = new MenuPage(page);
     await cartPage.open();
   });
-
-  test('Empties the cart after page reload', async ({page}) => {
-    let coffeeType = 'Espresso';
-    await navHeader.toMenu();
-    await menuPage.addToCart(coffeeType);
-    await navHeader.toCart();
-    await cartPage.reload();
-    await cartPage.assertEmptyCartMessageIsVisible();
-  })
 
   test('Adds coffee item added via menu page, adds/removes one unit in the cart, and removes product from the cart ', async () => {
     let coffeeType1 = 'Espresso';
@@ -40,8 +31,9 @@ test.describe('Tests "Cart" page', () => {
     await cartPage.addOne(coffeeType1);
     await cartPage.removeOne(coffeeType1);
     await cartPage.removeProduct(coffeeType1);
+
+    await cartPage.assertEmptyCartMessageIsVisible();
   });
-  
 })
 
 

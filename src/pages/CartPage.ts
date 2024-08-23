@@ -41,6 +41,4 @@ export class CartPage extends AbstractPage {
       await expect(this.emptyCartMessage).toBeVisible();
     });
   }
-
-
 }
