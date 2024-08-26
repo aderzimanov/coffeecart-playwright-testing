@@ -23,49 +23,49 @@ export class PaymentDetails {
   }
 
   async submit(): Promise<void> {
-    await test.step(`Clicks on "Submit" button`, async() => {
+    await test.step(`Click on "Submit" button`, async() => {
       await this.submitButton.click();
     });
   }
 
   async close(): Promise<void> {
-    await test.step(`Closes the dialog`, async() => {
+    await test.step(`Close the dialog`, async() => {
       await this.closeButton.click();
     });
   }
   
   async fillName(name: string): Promise<void> {
-    await test.step(`Fills name with "${name}"`, async() => {
+    await test.step(`Fill name with "${name}"`, async() => {
       await this.nameField.fill(name);
     });
   }
 
   async fillEmail(email: string): Promise<void> {
-    await test.step(`Fills e-mail with "${email}"`, async() => {
+    await test.step(`Fill e-mail with "${email}"`, async() => {
       await this.emailField.fill(email);
     });
   }
   
   async checkPromo(): Promise<void> {
-    await test.step(`Checks promo checkbox`, async() => {
+    await test.step(`Check promo checkbox`, async() => {
       await this.promoCheckbox.check({ force: true });
     });
   }
 
   async assertIfNotVisible(): Promise<void> {
-    await test.step(`Checks if payment dialog is not visible`, async() => {
+    await test.step(`Check if payment dialog is not visible`, async() => {
       await expect(this.title).toBeHidden();
     });
   }
   
   async assertIfVisible(): Promise<void> {
-    await test.step(`Checks if payment dialog is not visible`, async() => {
+    await test.step(`Check if payment dialog is not visible`, async() => {
       await expect(this.title).toBeVisible();
     });
   }
 
   async assertIfSuccessSnackBarAppears(): Promise<void> {
-    await test.step(`Checks if success snackbar appears after valid data submission`, async() => {
+    await test.step(`Check if success snackbar appears after valid data submission`, async() => {
       await expect(this.successSnackbar).toBeVisible();
       await expect(this.successSnackbar).toHaveText('Thanks for your purchase. Please check your email for payment.');
     });

@@ -1,4 +1,4 @@
-import { test, expect } from '../../src/fixtures/UsedFixtures';
+import { test, expect } from '../fixtures/Fixtures';
 import { CartPage } from '../../src/pages/CartPage';
 import { MenuPage } from '../../src/pages/MenuPage';
 
@@ -12,7 +12,7 @@ test.describe('Test adding to cart via confirmation dialog', () => {
     await cartPage.open();
   });
 
-  test('Adds coffee item to cart after clicking "Yes" in confirmation dialog', async ({page}) => {
+  test('Add coffee item to cart after clicking "Yes" in confirmation dialog', async ({page}) => {
     let coffeeType = 'Espresso';
     await menuPage.goToMenu();
     await menuPage.invokeAddToCartConfirmation(coffeeType);
@@ -22,7 +22,7 @@ test.describe('Test adding to cart via confirmation dialog', () => {
     await cartPage.assertProductPresenceInCart(coffeeType);
   });
   
-  test('Does not add coffee item to cart after clicking "Yes" in confirmation dialog', async ({page}) => {
+  test('Do not add coffee item to cart after clicking "Yes" in confirmation dialog', async ({page}) => {
     let coffeeType = 'Mocha';
     await cartPage.goToMenu();
     await menuPage.invokeAddToCartConfirmation(coffeeType);

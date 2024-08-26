@@ -1,59 +1,57 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
-import { AbstractPage } from './BasePage';
+import { BasePage } from './BasePage';
  
-export class CartPage extends AbstractPage {
-  readonly page: Page;
+export class CartPage extends BasePage {
   readonly emptyCartMessage: Locator;
+  readonly url: string = '/cart';
+  readonly name: string;
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
-    this.url = './cart';
+    this.name = 'Cart';
     this.emptyCartMessage = page.getByText('No coffee, go add some.');
   }
 
-  async removeProductButtonLocator(productName: string): Promise<Locator> {
+  async removeAllButtonLocator(productName: string): Promise<Locator> {   
     return this.page.getByLabel(`Remove all ${productName}`, { exact: true });
   }
 
-  async removeProduct(productName: string): Promise<void> {    
+  async clickRemoveAllProductItemsButton(productName: string): Promise<void> {    
     await test.step(`Remove ${productName} product from the cart`, async() => {
-      const removeButtonLocator = await this.removeProductButtonLocator(productName);
+      const removeButtonLocator = await this.removeAllButtonLocator(productName);
       await removeButtonLocator.click();
     });
   }
 
-  async addOne(productName: string): Promise<void> {
-    let addOneButton = this.page.getByRole('button', { name: `Add one ${productName}`, exact: true });
-    
-    await test.step(`Adds 1 unit of ${productName} to the cart`, async() => {
+  async clickAddOneButton(productName: string): Promise<void> {
+    await test.step(`Add 1 unit of ${productName} to the cart`, async() => {
+      let addOneButton = this.page.getByRole('button', { name: `Add one ${productName}`, exact: true });
       await addOneButton.click();
     });
   }
 
-  async removeOne(productName: string): Promise<void> {
-    let removeOneButton = this.page.getByRole('button', { name: `Remove one ${productName}`, exact: true });
-
+  async clickRemoveOneButton(productName: string): Promise<void> {    
     await test.step(`Remove 1 unit of ${productName} to the cart`, async() => {
+      let removeOneButton = this.page.getByRole('button', { name: `Remove one ${productName}`, exact: true });
       await removeOneButton.click();
     });
   }
   
   async assertEmptyCartMessageIsVisible(): Promise<void> {
-    await test.step(`Check if the message about empty cart is displayed`, async() => {
+    await test.step(`Assert that the message about empty cart is displayed`, async() => {
       await expect(this.emptyCartMessage).toBeVisible();
     });
   }
 
   async assertProductPresenceInCart(productName: string): Promise<void> {
-    await test.step(`Check if "${productName}" is present in the cart`, async() => {
-      await expect(await this.removeProductButtonLocator(productName)).toBeVisible();
+    await test.step(`Assert that "${productName}" is present in the cart`, async() => {
+      await expect(await this.removeAllButtonLocator(productName)).toBeVisible();
     });
   }
   
   async assertProductAbsenceInCart(productName: string): Promise<void> {
-    await test.step(`Check if "${productName}" is NOT present in the cart`, async() => {
-      await expect(await this.removeProductButtonLocator(productName)).toBeHidden();
+    await test.step(`Assert that "${productName}" is NOT present in the cart`, async() => {
+      await expect(await this.removeAllButtonLocator(productName)).toBeHidden();
     });
   }
 }

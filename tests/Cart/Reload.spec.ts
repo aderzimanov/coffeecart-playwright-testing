@@ -1,4 +1,4 @@
-import { test, expect } from '../../src/fixtures/UsedFixtures';
+import { test, expect } from '../fixtures/Fixtures';
 import { CartPage } from '../../src/pages/CartPage';
 import { MenuPage } from '../../src/pages/MenuPage';
 
@@ -12,7 +12,7 @@ test.describe('Test cart behaior on page reload', () => {
     await cartPage.open();
   });
 
-  test('Empties the cart after page reload', async ({page}) => {
+  test('Empty the cart after page reload', async ({page}) => {
     let coffeeType = 'Espresso';
     await cartPage.goToMenu();
     await menuPage.addToCartByClick(coffeeType);
