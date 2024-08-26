@@ -15,7 +15,7 @@ test.describe('Checks that a total amount to checkout is increased accordingly t
   for (let item of coffeeNames) {
     test(`Increments total amount for checkout after a click on "${item}" item`, async () => {
       await allure.parameter("Coffee Type", item);
-      await menuPage.addToCart(item);
+      await menuPage.addToCartByClick(item);
       const expectedPrice = await menuPage.getPrice(item);
       await menuPage.checkoutWidget.assertIfAmountIsEqualTo(expectedPrice);
     });
