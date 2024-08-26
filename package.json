@@ -8,9 +8,16 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@eslint/js": "^9.9.0",
     "@playwright/test": "^1.46.1",
     "@types/node": "^22.4.0",
     "allure-commandline": "^2.30.0",
-    "allure-playwright": "^2.15.1"
+    "allure-playwright": "^2.15.1",
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0",
+    "typescript-eslint": "^8.2.0"
+  },
+  "dependencies": {
+    "eslint-plugin-playwright": "^1.6.2"
   }
 }

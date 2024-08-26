@@ -1,5 +1,5 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
-import { AbstractPage } from './AbstractPage';
+import { AbstractPage } from './BasePage';
  
 export class GitHubPage extends AbstractPage {
   readonly page: Page;
