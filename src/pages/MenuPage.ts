@@ -1,6 +1,6 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-import { ROUTES } from './Constants';
+import { ROUTES } from './_Constants';
  
 export class MenuPage extends BasePage {
   url: string = ROUTES.menu;
@@ -14,7 +14,6 @@ export class MenuPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.name = 'Menu';
     this.coffeeItemLocators = page.locator(`li:has(h4)`);
     this.addToCartConfirmButton = page.getByRole('button', { name: 'Yes'});
     this.addToCartRejectButton = page.getByRole('button', { name: 'No'});

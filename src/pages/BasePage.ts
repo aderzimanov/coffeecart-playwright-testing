@@ -5,7 +5,6 @@ import { PaymentDetailsDialog } from '../components/PaymentDetailsDialog';
 export abstract class BasePage {
   readonly page: Page;
   readonly url: string;
-  abstract name: string;
   readonly checkoutWidget: CheckoutWidget;
   readonly paymentDetailsDialog: PaymentDetailsDialog;
   readonly menuLink: Locator;
@@ -20,9 +19,13 @@ export abstract class BasePage {
     this.checkoutWidget = new CheckoutWidget(page);
     this.paymentDetailsDialog = new PaymentDetailsDialog(page);
   }
+
+  get pageName(): string {
+    return this.constructor.name.replace('Page', '');
+  }
   
   async open(): Promise<void> {
-    await test.step(`Open the ${this.name} page`, async() => {
+    await test.step(`Open the ${this.pageName} page`, async() => {
       await this.page.goto(this.url);
     });
   }

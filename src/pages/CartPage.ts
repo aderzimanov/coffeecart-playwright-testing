@@ -1,6 +1,6 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-import { ROUTES } from './Constants';
+import { ROUTES } from './_Constants';
  
 export class CartPage extends BasePage {
   url: string = ROUTES.cart;
@@ -9,7 +9,6 @@ export class CartPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.name = 'Cart';
     this.emptyCartMessage = page.getByText('No coffee, go add some.');
   }
 

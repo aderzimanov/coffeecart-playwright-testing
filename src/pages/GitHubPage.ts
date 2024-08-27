@@ -1,6 +1,6 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-import { ROUTES } from './Constants';
+import { ROUTES } from './_Constants';
  
 export class GitHubPage extends BasePage {
   url: string = ROUTES.github;
@@ -10,7 +10,6 @@ export class GitHubPage extends BasePage {
   
   constructor(page: Page) {
     super(page);
-    this.name = 'GitHub';
     this.gitHubLink = page.getByRole('link', { name: 'jecfish/coffee-cart' });
     this.extraActionsLink = page.getByRole('link', { name: 'usual add to cart flows.' });
   }
