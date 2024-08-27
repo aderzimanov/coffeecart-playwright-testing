@@ -1,5 +1,5 @@
 import { test, expect } from '../fixtures/Fixtures';
-import { MenuPage } from '../../src/pages/MenuPage';
+import { MenuPage } from '../../src/ui/pages/MenuPage';
 
 let menuPage: MenuPage;
 

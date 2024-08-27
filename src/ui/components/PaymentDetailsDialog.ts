@@ -29,7 +29,7 @@ export class PaymentDetailsDialog {
   }
 
   async clickCloseButton(): Promise<void> {
-    await test.step(`Close the dialog`, async() => {
+    await test.step(`Click on "×" button`, async() => {
       await this.closeButton.click();
     });
   }
@@ -71,7 +71,8 @@ export class PaymentDetailsDialog {
   }
   async assertSuccessSnackBarHasExpectedText(): Promise<void> {
     await test.step(`Verify if success snackbar has expected text`, async() => {
-      await expect(this.successSnackbar).toHaveText('Thanks for your purchase. Please check your email for payment.');
+      await expect(this.successSnackbar)
+        .toHaveText('Thanks for your purchase. Please check your email for payment.');
     });
   }
 

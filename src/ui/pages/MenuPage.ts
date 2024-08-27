@@ -1,9 +1,9 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-import { ROUTES } from './_Constants';
+import { ROUTES } from '../Constants';
  
 export class MenuPage extends BasePage {
-  url: string = ROUTES.menu;
+  url = ROUTES.menu;
   readonly name: string;
   readonly coffeeItemLocators: Locator;
   readonly addToCartConfirmButton: Locator;

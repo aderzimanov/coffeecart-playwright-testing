@@ -1,6 +1,6 @@
 import { test, expect } from '../fixtures/Fixtures';
-import { CartPage } from '../../src/pages/CartPage';
-import { MenuPage } from '../../src/pages/MenuPage';
+import { CartPage } from '../../src/ui/pages/CartPage';
+import { MenuPage } from '../../src/ui/pages/MenuPage';
 
 let menuPage: MenuPage;
 let cartPage: CartPage;

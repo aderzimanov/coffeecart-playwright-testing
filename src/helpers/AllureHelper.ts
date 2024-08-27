@@ -11,15 +11,16 @@ export class AllureHelper {
     const normalizedPath = specFilePath.replace(/\\/g, '/');
     const parts = normalizedPath.split('/');
     const componentName = parts[parts.length - 2];
-    const featureNameWithExt = parts[parts.length - 1];
-    const component: string = this.convertCamelCaseToSpaceSeparatedWords(componentName);
-    const feature: string = this.convertCamelCaseToSpaceSeparatedWords(featureNameWithExt.replace('.spec.ts', ''));
+    const featureName = parts[parts.length - 1].replace('.spec.ts', '');
+    const component = this.convertCamelCaseToSpaceSeparatedWords(componentName);
+    const feature = this.convertCamelCaseToSpaceSeparatedWords(featureName);
 
     return {component, feature};
   };
   
   async setComponentAndFeature(specFilePath: string): Promise<void> {
     const fileData = await this.parseComponentAndFeatureFromFilePath(specFilePath);
+    
     await allure.epic(`${fileData.component}`);
     await allure.feature(`${fileData.feature}`);
   }

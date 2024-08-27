@@ -1,9 +1,9 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-import { ROUTES } from './_Constants';
+import { ROUTES } from '../Constants';
  
 export class GitHubPage extends BasePage {
-  url: string = ROUTES.github;
+  url = ROUTES.github;
   readonly name: string;
   readonly gitHubLink: Locator;
   readonly extraActionsLink: Locator;
