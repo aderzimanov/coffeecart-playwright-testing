@@ -19,7 +19,7 @@ test.describe('Test adding to cart via confirmation dialog', () => {
     await menuPage.confirmAddToCart();
     await menuPage.goToCart();
 
-    await cartPage.assertProductPresenceInCart(coffeeType);
+    await cartPage.assertProductIsPresentInCart(coffeeType);
   });
   
   test('Do not add coffee item to cart after clicking "Yes" in confirmation dialog', async ({page}) => {
@@ -29,7 +29,7 @@ test.describe('Test adding to cart via confirmation dialog', () => {
     await menuPage.rejectAddToCart();
     await menuPage.goToCart();
 
-    await cartPage.assertProductAbsenceInCart(coffeeType);
+    await cartPage.assertProductIsAbsentInCart(coffeeType);
   });
 })
 

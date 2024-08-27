@@ -11,23 +11,24 @@ test.describe('Test "Payment Details" dialog', () => {
   });
 
   test('Check if dialog can be successfully closed', async () => {
-    await menuPage.paymentDetails.close();
-    await menuPage.paymentDetails.assertIfNotVisible();
+    await menuPage.paymentDetailsDialog.clickCloseButton();
+    await menuPage.paymentDetailsDialog.assertIsNotVisible();
   });
 
   test('Do NOT close dialog using "Submit" button if the input fields are empty', async () => {
-    await menuPage.paymentDetails.submit();
-    await menuPage.paymentDetails.assertIfVisible();   
+    await menuPage.paymentDetailsDialog.clickSubmitButton();
+    await menuPage.paymentDetailsDialog.assertIsVisible();   
   });
 
   test('Display success snackbar after entering and submitting valid data', async () => {
-    await menuPage.paymentDetails.fillName('John Doe');
-    await menuPage.paymentDetails.fillEmail('john.doe@mail.com');
-    await menuPage.paymentDetails.checkPromo();
-    await menuPage.paymentDetails.submit();
+    await menuPage.paymentDetailsDialog.fillNameField('John Doe');
+    await menuPage.paymentDetailsDialog.fillEmailField('john.doe@mail.com');
+    await menuPage.paymentDetailsDialog.checkPromoCheckbox();
+    await menuPage.paymentDetailsDialog.clickSubmitButton();
 
-    await menuPage.paymentDetails.assertIfNotVisible();
-    await menuPage.paymentDetails.assertIfSuccessSnackBarAppears();
+    await menuPage.paymentDetailsDialog.assertIsNotVisible();
+    await menuPage.paymentDetailsDialog.assertSuccessSnackBarIsVisible();
+    await menuPage.paymentDetailsDialog.assertSuccessSnackBarHasExpectedText();
   });
 })
 

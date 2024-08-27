@@ -13,7 +13,7 @@ test.describe('Check that a total amount to checkout is increased accordingly to
   });
 
   for (let item of coffeeNames) {
-    test(`Increment total amount for checkout after a click on "${item}" item`, async () => {
+    test(`Assert that total amount for checkout is incremented by item price after a click on "${item}" item`, async () => {
       await allure.parameter("Coffee Type", item);
       await menuPage.addToCartByClick(item);
       const expectedPrice = await menuPage.getPrice(item);

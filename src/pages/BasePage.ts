@@ -1,13 +1,13 @@
 import { test, type Locator, type Page } from '@playwright/test';
 import { CheckoutWidget } from '../components/CheckoutWidget';
-import { PaymentDetails } from '../components/PaymentDetails';
+import { PaymentDetailsDialog } from '../components/PaymentDetailsDialog';
  
 export abstract class BasePage {
   readonly page: Page;
   readonly url: string;
   abstract name: string;
   readonly checkoutWidget: CheckoutWidget;
-  readonly paymentDetails: PaymentDetails;
+  readonly paymentDetailsDialog: PaymentDetailsDialog;
   readonly menuLink: Locator;
   readonly cartLink: Locator;
   readonly gitHubLink: Locator;
@@ -18,7 +18,7 @@ export abstract class BasePage {
     this.cartLink = page.getByLabel('Cart page');
     this.gitHubLink = page.getByLabel('Github page');
     this.checkoutWidget = new CheckoutWidget(page);
-    this.paymentDetails = new PaymentDetails(page);
+    this.paymentDetailsDialog = new PaymentDetailsDialog(page);
   }
   
   async open(): Promise<void> {

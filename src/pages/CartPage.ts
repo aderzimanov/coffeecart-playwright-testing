@@ -1,9 +1,10 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { ROUTES } from './Constants';
  
 export class CartPage extends BasePage {
+  url: string = ROUTES.cart;
   readonly emptyCartMessage: Locator;
-  readonly url: string = '/cart';
   readonly name: string;
 
   constructor(page: Page) {
@@ -43,13 +44,13 @@ export class CartPage extends BasePage {
     });
   }
 
-  async assertProductPresenceInCart(productName: string): Promise<void> {
+  async assertProductIsPresentInCart(productName: string): Promise<void> {
     await test.step(`Assert that "${productName}" is present in the cart`, async() => {
       await expect(await this.removeAllButtonLocator(productName)).toBeVisible();
     });
   }
   
-  async assertProductAbsenceInCart(productName: string): Promise<void> {
+  async assertProductIsAbsentInCart(productName: string): Promise<void> {
     await test.step(`Assert that "${productName}" is NOT present in the cart`, async() => {
       await expect(await this.removeAllButtonLocator(productName)).toBeHidden();
     });
