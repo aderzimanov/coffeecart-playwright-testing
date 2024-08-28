@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/Fixtures';
+import { test } from '../fixtures/Fixtures';
 import { CartPage } from '../../src/ui/pages/CartPage';
 import { MenuPage } from '../../src/ui/pages/MenuPage';
 
@@ -13,8 +13,8 @@ test.describe('Test the actions available after adding products to the cart ', (
   });
 
   test('Add coffee item added via menu page, adds/removes one unit in the cart, and removes product from the cart ', async () => {
-    let coffeeType1 = 'Espresso';
-    let coffeeType2 = 'Espresso Macchiato';
+    const coffeeType1 = 'Espresso';
+    const coffeeType2 = 'Espresso Macchiato';
     await cartPage.goToMenu();
     await menuPage.addToCartByClick(coffeeType1);
     await menuPage.addToCartByClick(coffeeType2);

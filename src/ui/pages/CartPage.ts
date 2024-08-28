@@ -25,14 +25,14 @@ export class CartPage extends BasePage {
 
   async clickAddOneButton(productName: string): Promise<void> {
     await test.step(`Add 1 unit of ${productName} to the cart`, async() => {
-      let addOneButton = this.page.getByRole('button', { name: `Add one ${productName}`, exact: true });
+      const addOneButton = this.page.getByRole('button', { name: `Add one ${productName}`, exact: true });
       await addOneButton.click();
     });
   }
 
   async clickRemoveOneButton(productName: string): Promise<void> {    
     await test.step(`Remove 1 unit of ${productName} to the cart`, async() => {
-      let removeOneButton = this.page.getByRole('button', { name: `Remove one ${productName}`, exact: true });
+      const removeOneButton = this.page.getByRole('button', { name: `Remove one ${productName}`, exact: true });
       await removeOneButton.click();
     });
   }

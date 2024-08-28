@@ -1,4 +1,3 @@
-import type { Page } from '@playwright/test';
 import { allure } from 'allure-playwright';
 
 export class AllureHelper {
