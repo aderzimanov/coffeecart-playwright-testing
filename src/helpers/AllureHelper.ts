@@ -6,7 +6,9 @@ export class AllureHelper {
     return inputString.replace(/([a-z])([A-Z])/g, '$1 $2');
   };
 
-  async parseComponentAndFeatureFromFilePath(specFilePath: string): Promise<Record<string, string>> {
+  async parseComponentAndFeatureFromFilePath(
+    specFilePath: string,
+  ): Promise<Record<string, string>> {
     const normalizedPath = specFilePath.replace(/\\/g, '/');
     const parts = normalizedPath.split('/');
     const componentName = parts[parts.length - 2];
@@ -18,9 +20,9 @@ export class AllureHelper {
   };
   
   async setComponentAndFeature(specFilePath: string): Promise<void> {
-    const fileData = await this.parseComponentAndFeatureFromFilePath(specFilePath);
+    const {component, feature} = await this.parseComponentAndFeatureFromFilePath(specFilePath);
     
-    await allure.epic(`${fileData.component}`);
-    await allure.feature(`${fileData.feature}`);
+    await allure.epic(component);
+    await allure.feature(feature);
   }
 }

@@ -1,6 +1,6 @@
 import { test, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-import { ROUTES } from '../Constants';
+import { ROUTES } from '../constants';
  
 export class MenuPage extends BasePage {
   url = ROUTES.menu;
@@ -69,7 +69,6 @@ export class MenuPage extends BasePage {
       await this.addToCartByClick('Espresso');
       await this.addToCartByClick('Mocha');
       await this.addToCartByClick('Cafe Latte');
-
     });
   }
   
@@ -85,9 +84,27 @@ export class MenuPage extends BasePage {
     });
   }
 
-  async getPromoProductName(): Promise<string | null> {
-    const title = this.promoTitleLocator.textContent();
-    //TODO: parse the text ane extract coffee name
-    return this.promoTitleLocator.textContent();  
+  async getPromoProductPrice(): Promise<number> {
+    const result = test.step('Extract product price from the promo text', async() => {
+      const title = await this.promoTitleLocator.textContent() || '';
+      const priceStart = title.indexOf('$') + 1;
+      const priceEnd = title.indexOf('.', priceStart);
+      const price = title.slice(priceStart, priceEnd); //price resides between '$' and dot. 
+      return +price;
+    });
+    
+    return result;
   }
+
+  async getPromoProductName(): Promise<string> {
+    const result = test.step('Extract product name from the promo text', async() => {
+      const title = await this.promoTitleLocator.textContent() || '';
+      const nameStart = title.indexOf('of') + 2;
+      const nameEnd = title.indexOf('for');
+      const name = title.slice(nameStart, nameEnd).trim(); //coffee name resides between 'of' and 'for' words
+      return name; 
+    });
+    
+    return result;
+  };
 }

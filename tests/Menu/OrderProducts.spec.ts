@@ -4,7 +4,7 @@ import { allure } from 'allure-playwright';
 
 let menuPage: MenuPage;
 
-test.describe('Check that a total amount to checkout is increased accordingly to added coffee type', () => {
+test.describe('Verify that a total amount to checkout is increased accordingly to added coffee type', () => {
   const coffeeNames = ['Espresso', 'Espresso Macchiato', 'Cappuccino', 'Mocha', 'Flat White', 'Americano', 'Cafe Latte', 'Espresso Con Panna', 'Cafe Breve'];
   
   test.beforeEach(async({ page }) => {

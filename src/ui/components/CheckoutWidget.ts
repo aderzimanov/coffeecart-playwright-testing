@@ -2,12 +2,10 @@ import { expect, test, type Locator, type Page } from '@playwright/test';
 
 export class CheckoutWidget {
   private readonly page: Page;
-  readonly amount: number;
   readonly checkoutWidgetLocator: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.amount = 0;
     this.checkoutWidgetLocator = page.locator('[data-test="checkout"]');
   }
 

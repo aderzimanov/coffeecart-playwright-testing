@@ -5,14 +5,16 @@ import { MenuPage } from '../../src/ui/pages/MenuPage';
 let menuPage: MenuPage;
 let cartPage: CartPage;
 
-test.describe('Test the actions available after adding products to the cart ', () => {
+test.describe('Verify the actions available after adding products to the cart ', () => {
   test.beforeEach(async({ page }) => {
     cartPage = new CartPage(page);
     menuPage = new MenuPage(page);
     await cartPage.open();
   });
 
-  test('Add coffee item added via menu page, adds/removes one unit in the cart, and removes product from the cart ', async () => {
+  test(`Verify workflow of adding coffee item to cart via menu page => 
+    adding/removing 1 unit => 
+    removing product from the cart`, async () => {
     const coffeeType1 = 'Espresso';
     const coffeeType2 = 'Espresso Macchiato';
     await cartPage.goToMenu();

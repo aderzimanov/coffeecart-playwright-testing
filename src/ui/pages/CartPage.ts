@@ -1,6 +1,6 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-import { ROUTES } from '../Constants';
+import { ROUTES } from '../constants';
  
 export class CartPage extends BasePage {
   url = ROUTES.cart;
