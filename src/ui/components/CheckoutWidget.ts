@@ -10,10 +10,15 @@ export class CheckoutWidget {
   }
 
   async getAmount(): Promise<number> {
-    test.step('Gets the current total amount to checkout', async() => {});
-      const checkoutString = await this.checkoutWidgetLocator.textContent() || '';
+    const result = test.step(
+      'Gets the current total amount to checkout', async() => {
+      const checkoutString = await 
+        this.checkoutWidgetLocator.textContent() || '';
       return +checkoutString.split(' $')[1];
-    }
+    });
+
+    return result;
+  }
 
   async click(): Promise<void> {
     await test.step(`Clicks on the checkout widget`, async() => {

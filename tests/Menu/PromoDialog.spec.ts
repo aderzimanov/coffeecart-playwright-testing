@@ -12,11 +12,14 @@ test.describe('Verify promo dialog', () => {
     await menuPage.open();
   });
 
-  test('Verify that promo product is added to cart with "Discounted" prefix', async () => {
-    await menuPage.invokeFirstPromoDialog();
-    const name = await menuPage.getPromoProductName();
-    await menuPage.confirmPromoProduct();
-    await menuPage.goToCart();
-    await cartPage.assertProductIsPresentInCart(`(Discounted) ` + name);
-  });
+  test(
+    'Verify that promo product is added to cart with "Discounted" prefix', 
+    async () => {
+      await menuPage.invokeFirstPromoDialog();
+      const name = await menuPage.getPromoProductName();
+      await menuPage.confirmPromoProduct();
+      await menuPage.goToCart();
+      await cartPage.assertProductIsPresentInCart(`(Discounted) ` + name);
+    }
+  );
 })

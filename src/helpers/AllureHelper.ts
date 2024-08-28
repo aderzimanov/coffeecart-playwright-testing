@@ -20,7 +20,8 @@ export class AllureHelper {
   };
   
   async setComponentAndFeature(specFilePath: string): Promise<void> {
-    const {component, feature} = await this.parseComponentAndFeatureFromFilePath(specFilePath);
+    const {component, feature} = 
+      await this.parseComponentAndFeatureFromFilePath(specFilePath);
     
     await allure.epic(component);
     await allure.feature(feature);

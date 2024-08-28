@@ -10,14 +10,23 @@ export class GitHubPage extends BasePage {
   
   constructor(page: Page) {
     super(page);
-    this.gitHubLink = page.getByRole('link', { name: 'jecfish/coffee-cart' });
-    this.extraActionsLink = page.getByRole('link', { name: 'usual add to cart flows.' });
+    this.gitHubLink = page.getByRole(
+      'link', 
+      { name: 'jecfish/coffee-cart' }
+    );
+    this.extraActionsLink = page.getByRole(
+      'link', 
+      { name: 'usual add to cart flows.' }
+    );
   }
 
   async assertGitHubRepoLinkIsVisible(): Promise<void> {
-    await test.step(`Assert that project GitHub repo link is displayed`, async() => {
-      await expect(this.gitHubLink).toBeVisible();
-    });
+    await test.step(
+      `Assert that project GitHub repo link is displayed`, 
+      async() => {
+        await expect(this.gitHubLink).toBeVisible();
+      }
+    );
   }
   
   async assertExtraActionsLinkIsVisible(): Promise<void> {
