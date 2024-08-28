@@ -65,18 +65,18 @@ export class PaymentDetailsDialog {
   }
 
   async assertSuccessSnackBarIsVisible(): Promise<void> {
-    await test.step(`Verify if success snackbar appears after valid data submission`, async() => {
-      await expect(this.successSnackbar).toBeVisible();
-    });
+    await test.step(
+      `Verify if success snackbar appears after valid data submission`, 
+      async() => {
+        await expect(this.successSnackbar).toBeVisible();
+      }
+    );
   }
   async assertSuccessSnackBarHasExpectedText(): Promise<void> {
     await test.step(`Verify if success snackbar has expected text`, async() => {
-      await expect(this.successSnackbar)
-        .toHaveText('Thanks for your purchase. Please check your email for payment.');
+      await expect(this.successSnackbar).toHaveText(
+        'Thanks for your purchase. Please check your email for payment.'
+      );
     });
   }
-
-
-
-
 }

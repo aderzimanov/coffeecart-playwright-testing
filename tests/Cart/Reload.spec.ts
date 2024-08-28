@@ -5,14 +5,14 @@ import { MenuPage } from '../../src/ui/pages/MenuPage';
 let menuPage: MenuPage;
 let cartPage: CartPage;
 
-test.describe('Test cart behaior on page reload', () => {
+test.describe('Verify cart behaior on page reload', () => {
   test.beforeEach(async({ page }) => {
     cartPage = new CartPage(page);
     menuPage = new MenuPage(page);
     await cartPage.open();
   });
 
-  test('Empty the cart after page reload', async () => {
+  test('Verify that cart is empty after page reload', async () => {
     const coffeeType = 'Espresso';
     await cartPage.goToMenu();
     await menuPage.addToCartByClick(coffeeType);
