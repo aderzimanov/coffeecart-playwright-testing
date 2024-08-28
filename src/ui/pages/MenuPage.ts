@@ -23,9 +23,12 @@ export class MenuPage extends BasePage {
   }
 
   async getPrice(name: string): Promise<number> {
-    test.step(`Get the price of ${name} cup`, async() => {});
-    const headerString = await this.coffeeItemLocators.locator(`h4:has-text("${name} $")`).textContent() || '';
-    return +headerString.split(' $')[1];
+    const result = test.step(`Get the price of ${name} cup`, async() => {
+      const headerString = await this.coffeeItemLocators.locator(`h4:has-text("${name} $")`).textContent() || '';
+      return +headerString.split(' $')[1];
+    });
+
+    return result;
   }
 
   async clickableCoffeeItemLocator(name: string): Promise<Locator> {
