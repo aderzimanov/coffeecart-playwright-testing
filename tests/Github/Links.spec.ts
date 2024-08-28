@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/Fixtures';
+import { test } from '../fixtures/Fixtures';
 import { GitHubPage } from '../../src/ui/pages/GitHubPage';
 
 let gitHubPage: GitHubPage;

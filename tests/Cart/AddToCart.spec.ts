@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/Fixtures';
+import { test } from '../fixtures/Fixtures';
 import { CartPage } from '../../src/ui/pages/CartPage';
 import { MenuPage } from '../../src/ui/pages/MenuPage';
 
@@ -12,8 +12,8 @@ test.describe('Test adding to cart via confirmation dialog', () => {
     await cartPage.open();
   });
 
-  test('Add coffee item to cart after clicking "Yes" in confirmation dialog', async ({page}) => {
-    let coffeeType = 'Espresso';
+  test('Add coffee item to cart after clicking "Yes" in confirmation dialog', async () => {
+    const coffeeType = 'Espresso';
     await menuPage.goToMenu();
     await menuPage.invokeAddToCartConfirmation(coffeeType);
     await menuPage.confirmAddToCart();
@@ -22,8 +22,8 @@ test.describe('Test adding to cart via confirmation dialog', () => {
     await cartPage.assertProductIsPresentInCart(coffeeType);
   });
   
-  test('Do not add coffee item to cart after clicking "Yes" in confirmation dialog', async ({page}) => {
-    let coffeeType = 'Mocha';
+  test('Do not add coffee item to cart after clicking "Yes" in confirmation dialog', async () => {
+    const coffeeType = 'Mocha';
     await cartPage.goToMenu();
     await menuPage.invokeAddToCartConfirmation(coffeeType);
     await menuPage.rejectAddToCart();
