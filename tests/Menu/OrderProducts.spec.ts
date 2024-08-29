@@ -26,7 +26,7 @@ test.describe(
 
     for (const item of coffeeNames) {
       test(
-        `Assert that amount is increased by "${item}" price after click on it`, 
+        `Verify that amount is increased by "${item}" price after click on it`, 
         async () => {
           await allure.parameter("Coffee Type", item);
           await menuPage.addToCartByClick(item);

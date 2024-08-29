@@ -4,7 +4,7 @@ import { MenuPage } from '../../src/ui/pages/MenuPage';
 let menuPage: MenuPage;
 
 test.describe(
-  'Verify if expected elements are displayed on the main page', 
+  'Verify that expected elements are displayed on the main page', 
   () => {
     test.beforeEach(async({ page }) => {
       menuPage = new MenuPage(page);

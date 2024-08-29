@@ -20,8 +20,9 @@ export class CartPage extends BasePage {
     await test.step(
       `Remove ${itemName} product from the cart`, 
       async() => {
-        const removeButtonLocator = 
-          await this.removeAllButtonLocator(itemName);
+        const removeButtonLocator = (
+          await this.removeAllButtonLocator(itemName)
+        );
         await removeButtonLocator.click();
       }
     );
@@ -31,7 +32,10 @@ export class CartPage extends BasePage {
     await test.step(`Add 1 unit of ${productName} to the cart`, async() => {
       const addOneButton = this.page.getByRole(
         'button', 
-        { name: `Add one ${productName}`, exact: true }
+        { 
+          name: `Add one ${productName}`, 
+          exact: true 
+        }
       );
       await addOneButton.click();
     });
@@ -52,7 +56,7 @@ export class CartPage extends BasePage {
   
   async assertEmptyCartMessageIsVisible(): Promise<void> {
     await test.step(
-      `Assert that the message about empty cart is displayed`, 
+      `Verify that the message about empty cart is displayed`, 
       async() => {
         await expect(this.emptyCartMessage).toBeVisible();
       }
@@ -61,7 +65,7 @@ export class CartPage extends BasePage {
 
   async assertProductIsPresentInCart(productName: string): Promise<void> {
     await test.step(
-      `Assert that "${productName}" is present in the cart`, 
+      `Verify that "${productName}" is present in the cart`, 
       async() => {
         await expect(await this.removeAllButtonLocator(productName))
           .toBeVisible();
@@ -71,7 +75,7 @@ export class CartPage extends BasePage {
   
   async assertProductIsAbsentInCart(productName: string): Promise<void> {
     await test.step(
-      `Assert that "${productName}" is NOT present in the cart`, 
+      `Verify that "${productName}" is NOT present in the cart`, 
       async() => {
         await expect(await this.removeAllButtonLocator(productName))
           .toBeHidden();

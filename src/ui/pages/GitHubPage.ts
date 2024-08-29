@@ -22,7 +22,7 @@ export class GitHubPage extends BasePage {
 
   async assertGitHubRepoLinkIsVisible(): Promise<void> {
     await test.step(
-      `Assert that project GitHub repo link is displayed`, 
+      `Verify that project GitHub repo link is displayed`, 
       async() => {
         await expect(this.gitHubLink).toBeVisible();
       }
@@ -30,8 +30,11 @@ export class GitHubPage extends BasePage {
   }
   
   async assertExtraActionsLinkIsVisible(): Promise<void> {
-    await test.step(`Assert that app extra actions is displayed`, async() => {
-      await expect(this.extraActionsLink).toBeVisible();
-    });
+    await test.step(
+      `Verify that app extra actions link is displayed`, 
+      async() => {
+        await expect(this.extraActionsLink).toBeVisible();
+      }
+    );
   }
 }

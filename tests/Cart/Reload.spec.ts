@@ -5,7 +5,7 @@ import { MenuPage } from '../../src/ui/pages/MenuPage';
 let menuPage: MenuPage;
 let cartPage: CartPage;
 
-test.describe('Verify cart behaior on page reload', () => {
+test.describe('Verify cart behavior on page reload', () => {
   test.beforeEach(async({ page }) => {
     cartPage = new CartPage(page);
     menuPage = new MenuPage(page);

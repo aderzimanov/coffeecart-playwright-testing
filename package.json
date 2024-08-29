@@ -16,6 +16,7 @@
     "allure-commandline": "^2.30.0",
     "allure-playwright": "^2.15.1",
     "eslint": "^9.9.1",
+    "eslint-plugin-playwright": "^1.6.2",
     "globals": "^15.9.0",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.3.0"

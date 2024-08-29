@@ -10,7 +10,7 @@ test.describe('Verify "Payment Details" dialog', () => {
     await menuPage.checkoutWidget.click();
   });
 
-  test('Verify if dialog can be successfully closed', async () => {
+  test('Verify that dialog can be successfully closed', async () => {
     await menuPage.paymentDetailsDialog.clickCloseButton();
     await menuPage.paymentDetailsDialog.assertIsNotVisible();
   });

@@ -9,7 +9,7 @@ type MyFixtures = {
 export const test = base.extend<MyFixtures>({
   allureHelper: 
     [
-      async ({ page }, use, testInfo:TestInfo) => {
+      async ({}, use, testInfo:TestInfo) => {
         const allureHelper = new AllureHelper();
         await allureHelper.setComponentAndFeature(testInfo.file);
         await use(allureHelper);

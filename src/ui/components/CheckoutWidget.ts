@@ -11,17 +11,21 @@ export class CheckoutWidget {
 
   async getAmount(): Promise<number> {
     const result = test.step(
-      'Gets the current total amount to checkout', async() => {
-      const checkoutString = await 
-        this.checkoutWidgetLocator.textContent() || '';
-      return +checkoutString.split(' $')[1];
-    });
+      'Get the current total amount to checkout', 
+      async() => {
+        const checkoutString = (
+          await this.checkoutWidgetLocator.textContent() || ''
+        );
+        
+        return +checkoutString.split(' $')[1];
+      }
+    );
 
     return result;
   }
 
   async click(): Promise<void> {
-    await test.step(`Clicks on the checkout widget`, async() => {
+    await test.step(`Click on the checkout widget`, async() => {
       await this.checkoutWidgetLocator.click();
     });
   }

@@ -53,30 +53,33 @@ export class PaymentDetailsDialog {
   }
 
   async assertIsNotVisible(): Promise<void> {
-    await test.step(`Check if payment dialog is not visible`, async() => {
+    await test.step(`Verify that payment dialog is not visible`, async() => {
       await expect(this.title).toBeHidden();
     });
   }
   
   async assertIsVisible(): Promise<void> {
-    await test.step(`Check if payment dialog is not visible`, async() => {
+    await test.step(`Verify that payment dialog is not visible`, async() => {
       await expect(this.title).toBeVisible();
     });
   }
 
   async assertSuccessSnackBarIsVisible(): Promise<void> {
     await test.step(
-      `Verify if success snackbar appears after valid data submission`, 
+      `Verify that success snackbar appears after valid data submission`, 
       async() => {
         await expect(this.successSnackbar).toBeVisible();
       }
     );
   }
   async assertSuccessSnackBarHasExpectedText(): Promise<void> {
-    await test.step(`Verify if success snackbar has expected text`, async() => {
-      await expect(this.successSnackbar).toHaveText(
+    await test.step(
+      `Verify that success snackbar has expected text`, 
+      async() => {
+        await expect(this.successSnackbar).toHaveText(
         'Thanks for your purchase. Please check your email for payment.'
-      );
-    });
+        );
+      }
+    );
   }
 }

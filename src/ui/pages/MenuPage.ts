@@ -37,11 +37,14 @@ export class MenuPage extends BasePage {
 
   async getPrice(name: string): Promise<number> {
     const result = test.step(`Get the price of ${name} cup`, async() => {
-      const headerString = await this
+      const headerString = (
+        await this
         .coffeeItemLocators
         .locator(`h4:has-text("${name} $")`)
         .textContent() 
-        || '';
+        || ''
+      );
+
       return +headerString.split(' $')[1];
     });
 
@@ -52,6 +55,7 @@ export class MenuPage extends BasePage {
     const locatorValue = (name === 'Espresso Con Panna') 
       ? 'Espresso_Con Panna' 
       : name.replace(/ /g, '_'); //processing a bug for specific coffee type
+
     return this.coffeeItemLocators.locator(`div[data-test="${locatorValue}"]`);
   }
   
@@ -102,7 +106,7 @@ export class MenuPage extends BasePage {
     await test.step(
       `Confirm promo item addition to cart by click "Yes, of course!" button`, 
       async() => {
-      await this.promoConfirmButton.click();
+        await this.promoConfirmButton.click();
       }
     );
   }
