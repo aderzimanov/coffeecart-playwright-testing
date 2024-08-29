@@ -1,8 +1,8 @@
 # Overview
-This repository contains test automation project for Coffee Cart application https://coffee-cart.app/.
+This repository contains a test automation project for the Coffee Cart application https://coffee-cart.app/.
 
-Test framework: Playwright.
-Programming language: TypeScript.
+Test framework: Playwright.  
+Programming language: TypeScript.  
 Test reporter: Allure.
 
 # Getting Started
@@ -11,7 +11,7 @@ Test reporter: Allure.
 
 * Allure CommandLine (for local test report generation). 
 
-## Project setup (Windows)
+## Project Setup (Windows)
 
 1. TBD
 
