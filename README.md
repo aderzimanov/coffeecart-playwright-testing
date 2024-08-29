@@ -1,7 +1,7 @@
 # Overview
 This repository contains a test automation project for the Coffee Cart application https://coffee-cart.app/.
 
-Test framework:<b>Playwright</b>  
+Test framework: <b>Playwright</b>  
 Programming language: <b>TypeScript</b>  
 Test reporter: <b>Allure</b>
 
@@ -11,7 +11,7 @@ Test reporter: <b>Allure</b>
 
 * Allure CommandLine (for local test report generation). 
 
-## Project Setup (Windows)
+## Project Setup
 
 1. Install Node.JS version 20.16 or higher.
 2. Install Java version 1.8 or higher
